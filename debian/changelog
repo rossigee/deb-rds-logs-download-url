@@ -1,0 +1,5 @@
+rds-logs-download-url (0.1-0) UNRELEASED; urgency=medium
+
+  * Initial packaging.
+
+ -- Ross Golder <ross@golder.org>  Sat, 07 Aug 2021 08:00:41 +0700

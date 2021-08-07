@@ -1,2 +1,7 @@
-rds-logs-downloader-url
 main.go
+rds-logs-download-url
+
+debian/files
+debian/*.log
+debian/*.substvars
+

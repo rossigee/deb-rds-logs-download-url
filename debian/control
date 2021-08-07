@@ -1,0 +1,7 @@
+Source: rds-logs-download-url
+Maintainer: Jon Stacks <jon@jonstacks.com>
+Build-Depends: debhelper (>= 9), golang-go, curl, lsb-release
+
+Package: rds-logs-download-url
+Architecture: any
+Description: Fetches large RDS logs

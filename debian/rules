@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+DISTRIBUTION = $(shell lsb_release -sr)
+VERSION = 0.1
+PACKAGEVERSION = $(VERSION)
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	curl -sSL -o main.go https://raw.githubusercontent.com/jonstacks/aws/42e4c0c207572badc28b974f27c6fca233ac66d1/cmd/rds-logs-download-url/main.go
+	go build
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)
+
+override_dh_usrlocal:
