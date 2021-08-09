@@ -1,0 +1,30 @@
+agents:
+  - "queue=omise"
+  - "docker-builder=true"
+
+steps:
+  - label: ":hammer: Build '.deb' package for Ubuntu/Debian"
+    command: "make dockerbuild"
+    agents:
+      queue: omise
+      docker-builder: true
+
+  - wait
+
+  #- label : ":sonarqube: Sonarqube"
+  #  agents:
+  #    queue: omise
+  #    docker-builder: true
+  #  key: use-sonarqube
+  #  plugins:
+  #    - ssh://git@github.com/OmisePayments/omise-sonarscan-buildkite-plugin.git#2.1:
+  #        project_key: "${BUILDKITE_PIPELINE_NAME}"
+  #
+  #- wait
+
+  - label: ":car: Deploy '.deb' package to S3 bucket"
+    command: "make deploy S3_URI=s3://omise-ssm-repository-infra/debs/rds-logs-download-url"
+    agents:
+      queue: omise
+      docker-builder: true
+
